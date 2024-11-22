@@ -6,7 +6,7 @@ int _atoi(char *s)
 	int sign = 1;
 	int n = 0;
 
-	while ((*s > 0 && *s <= 47) || (*s >= 58 && *s <= 127))
+	while ((*s > 0 && *s <= 47) || (*s >= 58 && *s < 127))
 	{
 		if (*s == '-')
 		{
