@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
- * main - function that convert a string to an integer
+ * _atoi - function that convert a string to an integer
  *@s: String to be converted to int
  *
  * Return: converted int
@@ -10,22 +10,19 @@
 int _atoi(char *s)
 {
 	int sign = 1;
-	int n = 0;
-	int i = 0;
-	int flag = 0;
+	unsigned int n = 0;
 
-	while (s[i] != '\0')
+	while ((*s > 0 && *s <= 47) || (*s >= 58 && *s < 127))
 	{
-		if (s[i] == '-')
-			sign *= -1;
-		if (s[i] >= '0' && s[i] <= '9')
+		if (*s == '-')
 		{
-			n = (10 * n + s[i] - '0');
-			flag = 1;
+			sign *= -1;
+			s++;
 		}
-		else if (flag == 1)
-			break;
-		i++;
+		else
+			s++;
 	}
+	while (*s >= '0' && *s <= '9')
+		n = (10 * n + *s++ - '0');
 	return (sign * n);
 }
