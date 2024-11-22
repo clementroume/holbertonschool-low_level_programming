@@ -1,22 +1,31 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * main - function that convert a string to an integer
+ *@s: String to be converted to int
+ *
+ * Return: converted int
+ */
 int _atoi(char *s)
 {
 	int sign = 1;
 	int n = 0;
+	int i = 0;
+	int flag = 0;
 
-	while ((*s > 0 && *s <= 47) || (*s >= 58 && *s < 127))
+	while (s[i] != '\0')
 	{
-		if (*s == '-')
-		{
+		if (s[i] == '-')
 			sign *= -1;
-			s++;
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			n = (10 * n + s[i] - '0');
+			flag = 1;
 		}
-		else
-			s++;
+		else if (flag == 1)
+			break;
+		i++;
 	}
-	while (*s >= '0' && *s <= '9')
-		n = (10 * n + *s++ - '0');
 	return (sign * n);
 }
