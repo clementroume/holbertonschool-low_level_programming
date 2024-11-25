@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <unistd.h>
 /**
  * reset_to_98 - function that updates the value an int to 98
