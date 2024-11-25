@@ -2,26 +2,34 @@
 #include <stdlib.h>
 
 /**
- * add_dnodeint - function that prints all the elements of a dlistint_t list
+ * add_dnodeint_end - adds a new node at the end of a dlistint_t list
  * @head: doubly linked list to be appended
  * @n: the integer to be added in the list
  *
- * Return: the number of nodes.
+ * Return: the address of the new element, or NULL if it failed
  */
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *new = malloc(sizeof(dlistint_t));
+	dlistint_t *temp = NULL;
 
 	if (new == NULL)
 		return (NULL);
-
 	new->n = n;
-	new->prev = NULL;
-	new->next = *head;
-	if (*head != NULL)
-		(*head)->prev = new;
-	*head = new;
-
+	new->next = NULL;
+	if (*head == NULL)
+	{
+		new->prev = NULL;
+		*head = new;
+	}
+	else
+	{
+		temp = *head;
+		while (temp && temp->next)
+			temp = temp->next;
+		temp->next = new;
+		new->prev = temp;
+	}
 	return (new);
 }
