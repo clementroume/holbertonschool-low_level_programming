@@ -10,18 +10,19 @@ void puts2(char *str)
 {
 	int i;
 
-	i = 0;
+	i = 0; /* Initialize the index variable to 0 */
+
+	/* Loop through the string until the null terminator is reached */
 	while (str[i] != '\0')
 	{
-		if (i % 2 == 0)
+		if (i % 2 == 0) /* Check if the index is even */
 		{
-			_putchar(str[i]);
-			i++;
+			_putchar(str[i]); /* Print the character at the current index */
+			i++;			  /* Move to the next character */
 		}
 		else
-		{
-			i++;
-		}
+			i++; /* Skip the character by moving to the next index */
 	}
-	_putchar('\n');
+
+	_putchar('\n'); /* Print a newline character after printing the string */
 }
